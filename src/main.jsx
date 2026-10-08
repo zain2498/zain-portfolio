@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const nav = ['Home','About','Experience','Skills','Projects','Education','Contact'];
+const nav = ['Home','About','Experience','Resume','Skills','Projects','Education','Contact'];
 
 const experience = [
   {
@@ -147,8 +147,8 @@ function App(){
             <div className="pill"><span className="pulse"/> Backend Java Engineer · FinTech</div>
             <h1>Building backend systems that <em>move money</em> reliably.</h1>
             <p className="hero-lead">I’m Zain Badaruddin, a Backend Java Engineer focused on payment systems, banking applications, microservices and event-driven architecture.</p>
-            <div className="hero-actions"><button className="btn primary" onClick={()=>go('Projects')}>Explore my work <Icon name="arrow" size={18}/></button><button className="btn ghost" onClick={()=>go('Contact')}>Let’s connect</button></div>
-            <div className="socials"><a href="https://github.com/" target="_blank" rel="noreferrer"><Icon name="github" size={17}/> GitHub</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><Icon name="linkedin" size={17}/> LinkedIn</a><a href="mailto:zainbadar24@gmail.com"><Icon name="mail" size={17}/> Email</a></div>
+            <div className="hero-actions"><button className="btn primary" onClick={()=>go('Projects')}>Explore my work <Icon name="arrow" size={18}/></button><a className="btn ghost" href="/resume.pdf" target="_blank" rel="noreferrer"><Icon name="download" size={18}/> Download Resume</a></div>
+            <div className="socials"><a href="https://github.com/" target="_blank" rel="noreferrer"><Icon name="github" size={17}/> GitHub</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><Icon name="linkedin" size={17}/> LinkedIn</a><a href="mailto:your-email@example.com"><Icon name="mail" size={17}/> Email</a></div>
           </div>
           <aside className="hero-card reveal delay">
             <div className="card-label">ENGINEER PROFILE</div>
@@ -173,6 +173,28 @@ function App(){
         <div className="experience-list">{experience.map((e,i)=><article className="experience" key={e.company}><div className="exp-date">{e.date}</div><div className="exp-body"><div className="exp-heading"><div><span className="role-tag">{e.type}</span><h3>{e.role}</h3><h4>{e.company}</h4></div><span className="exp-number">0{i+1}</span></div><p className="exp-summary">{e.summary}</p><ul>{e.bullets.map(b=><li key={b}><Icon name="check" size={15}/>{b}</li>)}</ul><div className="tags">{e.stack.map(s=><span key={s}>{s}</span>)}</div></div></article>)}</div></div>
       </section>
 
+      <section id="resume" className="section resume-section">
+        <div className="shell">
+          <div className="resume-card">
+            <div className="resume-copy">
+              <div className="overline">RESUME</div>
+              <h2>Want the full professional story?</h2>
+              <p>Download my latest one-page resume for a concise overview of my experience in Java backend engineering, FinTech, banking, payment systems, technical skills, education and research.</p>
+              <div className="resume-actions">
+                <a className="btn primary" href="/resume.pdf" download="Zain-Badaruddin-Resume.pdf"><Icon name="download" size={18}/> Download Resume</a>
+                <a className="btn ghost" href="/resume.pdf" target="_blank" rel="noreferrer">View Resume <Icon name="external" size={17}/></a>
+              </div>
+            </div>
+            <div className="resume-meta">
+              <span className="resume-icon"><Icon name="briefcase" size={25}/></span>
+              <strong>Java Backend Software Engineer</strong>
+              <span>Spring Boot · Kafka · Microservices</span>
+              <span>Banking · FinTech · Payment Systems</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="skills" className="section shell">
         <div className="section-intro"><span className="index">03</span><div><div className="overline">TECHNICAL SKILLS</div><h2>The stack behind my work.</h2></div></div>
         <div className="skill-grid">{skillGroups.map(([title,items],i)=><article className="skill-group" key={title}><div className="skill-top"><span>0{i+1}</span><Icon name={i<2?'layers':i<4?'code':'star'} size={20}/></div><h3>{title}</h3><div className="skill-tags">{items.map(s=><span key={s}>{s}</span>)}</div></article>)}</div>
@@ -189,7 +211,7 @@ function App(){
       </section>
 
       <section id="contact" className="contact-section">
-        <div className="shell contact-grid"><div><span className="index light-index">06</span><div className="overline light-text">CONTACT</div><h2>Let’s build something dependable.</h2><p>Whether it’s a backend role, fintech product, payment integration or an interesting engineering problem, I’d be happy to connect.</p><div className="contact-links"><a href="mailto:zainbadar24@gmail.com"><Icon name="mail"/> zainbadar24@gmail.com</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><Icon name="linkedin"/> LinkedIn</a><span><Icon name="pin"/> Karachi, Pakistan</span></div></div><form onSubmit={e=>{e.preventDefault();setSent(true)}}><label>Name<input required placeholder="Your name"/></label><label>Email<input required type="email" placeholder="you@example.com"/></label><label>Message<textarea required rows="5" placeholder="Tell me what you’re working on..."/></label><button className="btn primary" type="submit">{sent?<><Icon name="check"/> Message captured</>:<>Send message <Icon name="arrow"/></>}</button>{sent&&<small>This demo form is ready to connect to Formspree, Resend or your own backend API.</small>}</form></div>
+        <div className="shell contact-grid"><div><span className="index light-index">06</span><div className="overline light-text">CONTACT</div><h2>Let’s build something dependable.</h2><p>Whether it’s a backend role, fintech product, payment integration or an interesting engineering problem, I’d be happy to connect.</p><div className="contact-links"><a href="mailto:your-email@example.com"><Icon name="mail"/> your-email@example.com</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><Icon name="linkedin"/> LinkedIn</a><span><Icon name="pin"/> Karachi, Pakistan</span></div></div><form onSubmit={e=>{e.preventDefault();setSent(true)}}><label>Name<input required placeholder="Your name"/></label><label>Email<input required type="email" placeholder="you@example.com"/></label><label>Message<textarea required rows="5" placeholder="Tell me what you’re working on..."/></label><button className="btn primary" type="submit">{sent?<><Icon name="check"/> Message captured</>:<>Send message <Icon name="arrow"/></>}</button>{sent&&<small>This demo form is ready to connect to Formspree, Resend or your own backend API.</small>}</form></div>
       </section>
     </main>
     <footer><div className="shell footer"><span>© 2026 Zain Badaruddin</span><span>Backend Java Engineer · FinTech · Payments</span></div></footer>
